@@ -1,0 +1,65 @@
+@import './color.scss';
+
+$spacer: 1rem;
+$spacers: (
+  0: 0,
+  1: $spacer / 4,
+  2: $spacer / 2,
+  3: $spacer,
+  4: $spacer * 1.5,
+  5: $spacer * 3,
+);
+
+
+$utilities: (
+    // padding
+    "padding": (
+      responsive: true,
+      property: padding,
+      class: p,
+      values: $spacers
+    ),
+    "padding-x": (
+      responsive: true,
+      property: padding-right padding-left,
+      class: px,
+      values: $spacers
+    ),
+    "padding-y": (
+      responsive: true,
+      property: padding-top padding-bottom,
+      class: py,
+      values: $spacers,
+    ),
+    // margins
+    "margin": (
+      responsive: true,
+      property: margin,
+      class: m,
+      values: map-merge($spacers, (auto: auto))
+    ),
+    "margin-x": (
+      responsive: true,
+      property: margin-right margin-left,
+      class: mx,
+      values: map-merge($spacers, (auto: auto))
+    ),
+    "margin-y": (
+      responsive: true,
+      property: margin-top margin-bottom,
+      class: my,
+      values: map-merge($spacers, (auto: auto))
+    ),
+);
+
+.pointer{
+    cursor: pointer;
+}
+
+.bg-light{
+    background-color: $red !important;
+}
+
+.mr-n{
+  margin-right: -40px;
+}

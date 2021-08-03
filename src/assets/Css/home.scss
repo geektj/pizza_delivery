@@ -1,0 +1,221 @@
+@import './color.scss';
+
+.categories{
+    background-color: $white;
+    border: 1px solid transparent;
+    height: 2.4em;
+    box-shadow: 5px 5px 5px rgb(210, 221, 233);
+    position: fixed;
+    top: 56px;
+    z-index: 1000;
+    .category-font{
+        font-size: 0.75em;
+        font-weight: 600;
+        letter-spacing: 0.4px;
+        text-align: center;
+        .category-text{
+            color: rgb(180, 191, 196);
+            text-decoration: none;
+        }
+        .active{
+            color: rgb(82, 137, 166);
+            border-bottom: 2px solid rgb(82, 137, 166);
+            // text-decoration: underline;
+            // text-decoration-color: rgb(82, 137, 166);
+        }
+    }
+    
+}
+
+.bg-color{
+    background-color: $primary-bg-color;
+}
+
+.main-page{
+    position:relative;
+    top: 95px;
+}
+
+.category-bar{
+    // position: relative;
+    margin-bottom:1rem;
+    .bar{
+        border: 1px solid $border-bar;
+        position: relative;
+        top: 1.8rem;
+        width: 100%;
+        // right: 0;
+        // z-index: -1;
+    }
+    .category-name{
+        background: $ref-bg;
+        border-radius: 2rem;
+        display: inline-flex;
+        align-items: center;
+        padding: 1rem 2rem;
+        margin: 0px 0px 0rem 1.5rem;
+        position: relative;
+        z-index: 10;
+        .name{
+            width: 100%;
+        }
+    }
+}
+.item-list{
+    .items{
+        padding-right: 2.5rem;
+        margin-bottom: 3rem;
+        width: 33.333%;
+        .items-box{
+            box-shadow: rgba(0, 0, 0 / 12%,0.12) 0px 2px 2px 0px, rgba(0, 0, 0 / 12%,0.12) 0px 2px 4px 0px;
+            background-color: $ref-bg;
+            border-radius: 3px;
+            // display: flex;
+            // flex-flow: row wrap;
+            // right: 0px;
+            // left: 0px;
+            // max-width: 100%;
+            // flex-basis: auto;
+            // justify-content: center;
+            // margin: 0rem;
+            .image{
+                .product-image{
+                    width: 100%;
+                    height: 8.5rem;
+                    
+                    img{
+                        width: 100%;
+                        height: 100%;
+                        border-radius: 3px 3px 0px 0px;
+                    }
+                }
+                .shadow{
+                    background-image: url('https://pizzaonline.dominos.co.in/static/assets/icons/shadow.svg');
+                    min-width: 0.3em;
+                    min-height: 0.3em;
+                    background-repeat: no-repeat;
+                    background-size: 100% 100%;
+                    width: 6rem;
+                    height: 4rem;
+                    position: absolute;
+                    bottom: 0px;
+                }
+                .price{
+                    position: absolute;
+                    top: 6.1rem;
+                    // bottom: 10px;
+                    left: 0.6rem;
+                    font-size: 1.2rem;
+                    font-weight: 600;
+                    color: rgb(255, 255, 255);
+                    .ruppee{
+                
+                    }
+                    &::before{
+                        content: '₹';
+                    }
+                }
+            }
+            
+            .item-desc{
+                padding:0.8rem;
+                flex-basis: auto;
+                flex-wrap: wrap;
+                width: 100%;
+                .item-name-desc{
+                    border-bottom: 1px solid rgb(233, 233, 233);
+                    margin-bottom: 1rem;
+                    display: flex;
+                    flex-direction: column;
+                    height: 5rem;
+                    .name{
+                        font-size: 1rem;
+                        font-weight: 600;
+                    }
+                    .desc{
+                        line-height: 1.2;
+                        font-size: 0.875rem;
+                        color: $light-grey;
+                        margin-top: 0.5rem;
+                        -webkit-line-clamp: 3;
+                        -webkit-box-orient: vertical;
+                        .read-more{
+                            color:$blue;
+                            text-decoration: underline;
+                            text-decoration-color: $blue;
+                            font-weight: bold;
+                            position: relative;
+                            // &:hover{
+                            //     position: absolute;
+                            //     // top: 10px;
+                            //     width: auto;
+                            //     height: auto;
+                            //     background-color: #ddd;
+                            //     transition: 0.5s linear;
+                            //     padding: 10px 15px;
+                            // }   
+                        }
+                        
+                        
+                    }
+                }
+                .size-qty{
+                    border-bottom: 1px solid rgb(233, 233, 233);
+                    margin-bottom: 1rem;
+                    .sizes{
+                        .text{
+                            font-size: 0.69rem;
+                            color: $light-grey;
+                            
+                        }
+                        select{
+                            border: 1px solid rgb(186, 186, 186);
+                            border-radius: 3px;
+                            background-color: $white;
+                            height: 26px;
+                            outline: none;
+
+                        }
+                    }
+                    .qty-counter{
+                        .text{
+                            font-size: 0.69rem;
+                            color: $light-grey;
+                        }
+                        .box{
+                            border: 1px solid rgb(186, 186, 186);
+                            border-radius: 3px;
+                            // max-width: 6rem;
+                            .minus{
+                                // padding: 0rem 0.8rem;
+                            }
+                            .qty{
+                                border-left: 1px solid rgb(186, 186, 186);
+                                border-right: 1px solid rgb(186, 186, 186);
+                                font-weight: 600;
+                                // padding: 0rem 0.8rem;
+                            }
+                            .plus{
+                                // padding: 0rem 0.8rem;
+                            }
+                        }
+                    }
+                    
+                }
+                .button{
+                    .cart-btn{
+                        border: 1px solid $green;
+                        color: $green;
+                        background-color: rgb(255, 255, 255);
+                        border-radius: 3px;
+                        outline: none;
+                        text-transform: uppercase;
+                        font-weight: 600;
+                        font-size: 0.68rem;
+                    }
+                }
+                
+            }
+        }
+    }
+}
