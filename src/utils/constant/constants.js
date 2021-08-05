@@ -45,6 +45,7 @@ export const Category = [
                 isVeg:true,
                 size:['small','medium','large'],
                 isFavourite:false,
+                qty:0,
                 price:'450',
             },
             {
