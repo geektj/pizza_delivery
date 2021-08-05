@@ -5,7 +5,7 @@ let Header = () => {
     return(
         <>
             <div className="header fixed-top">
-                <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                <nav className="navbar navbar-expand-lg navbar-light bg-header">
                     <div className="container col-12">
                         <a className="navbar-brand col-4 animated-text" href="#" data-text="Pizza Parcel">Pizza Parcel</a>
                         <div className="collapse navbar-collapse col-8" id="navbarSupportedContent">

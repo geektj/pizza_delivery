@@ -7,9 +7,14 @@
 // }
 
 .navbar-brand{
+    color: $white !important;
     font-weight: 700;
 }
 
+.nav-link{
+    color: $white !important;
+    font-weight: 500;
+}
 // .animated-text{
 //     -webkit-text-stroke: 0.1vw $white;
 // }
