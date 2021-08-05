@@ -16,8 +16,6 @@ class Home extends React.Component{
         this.state = {
             catgories: Category, 
             cart:[],
-            // getCart:[],
-            // itemPrice: Category.items.price,
         }
     }
 
@@ -69,41 +67,73 @@ class Home extends React.Component{
     }
 
     minusqty = (cartData) => {
-        console.log('cartminus',cartData);
-        let cartParse = JSON.parse(JSON.stringify(this.state.cart));
-        console.log('cartparse',cartParse);
-        let cartFilter = cartParse.filter((cartItem) => cartItem.item.id === cartData.item.id)[0];
-        console.log('cartfilter',cartFilter);
+        // console.log('cartminus',cartData);
+        if(cartData.item.qty > 0){
+            let cartParse = JSON.parse(JSON.stringify(this.state.cart));
+        // console.log('cartparse',cartParse);
+       
+        cartParse.map((cart) => {
+            if(cart.item.id === cartData.item.id){
+                cart.item.qty = cart.item.qty - 1;
+            }
+            return cart;
+        });
 
-        // cartFilter.item.map((el,i) =>{
-        //     if(el.item.id === cartData.item.id){
-        //         let cartQty = el.item.qty - 1;
-        //         el.item.qty = cartQty;
-        //     }
-        //     return el;
-        // });
-        // this.setState({cart: cartParse});
+        let categories = JSON.parse(JSON.stringify(this.state.catgories))
+        let category = categories.filter((category) => category.id === cartData.catId)[0];
+        // console.log('xyz',category);
+        category.items.map((el,i) => {
+            if(el.id === cartData.item.id){
+                let qty = el.qty - 1;
+                el.qty = qty;
+                // console.log('abc',);
+                
+            }
+            // console.log('el',el);
+            return el;
+            
+        });
+        this.setState({cart:cartParse , catgories: categories});
+        }
         
+               
     }
 
     addqty = (cartData) => {
-        // debugger
-        console.log('cartplus',cartData);
+        // console.log('cartplus',cartData);
         let cartParse = JSON.parse(JSON.stringify(this.state.cart));
-        console.log('cartparse',cartParse); 
-        let cartFilter = cartParse.filter((cartItem) => cartItem.item.id === cartData.item.id)[0];
-        console.log('cartfilter',cartFilter);
+        // console.log('cartparse',cartParse); 
+        
+        cartParse.map((cart) => {
+            if(cart.item.id === cartData.item.id) {
+                cart.item.qty = cart.item.qty + 1;
+                
+            }
+            return cart;
+        });
+          
+        let categories = JSON.parse(JSON.stringify(this.state.catgories))
+        let category = categories.filter((category) => category.id === cartData.catId)[0];
+        // console.log('xyz',category);
+        category.items.map((el,i) => {
+            if(el.id === cartData.item.id){
+                let qty = el.qty + 1;
+                el.qty = qty;
+                // console.log('abc',);
+                
+            }
+            // console.log('el',el);
+            return el;
+            
+        });
+        // console.log('el',el);
+        
+        this.setState({cart: cartParse, catgories: categories});
 
-        // let cartmap = cartFilter.map((el,i) =>{
-        //     // if(el.item.id === cartData.item.id){
-        //     //     let cartQty = el.item.qty + 1;
-        //     //     el.item.qty = cartQty;
-        //     // }
-        //     return el;
-        // });
-        // console.log('map',cartmap)
-        // this.setState({cart: cartParse});
+        
     }
+
+    
     render(){
         // console.log('render', this.state.cart);
         const {catgories} = this.state;
@@ -130,7 +160,7 @@ class Home extends React.Component{
                                 <div className="col-10 d-flex"> 
                                     <div className="position-fixed d-flex">
                                         <div className="cart-box">
-                                            {this.state.cart.length === 0 ? <EmptyCart /> : <AddToCart cartData={this.state.cart} minusqty={this.minusqty} addqty={this.addqty}/>}
+                                            {this.state.cart.length === 0 ? <EmptyCart /> : <AddToCart cartData={this.state.cart} minusqty={this.minusqty} addqty={this.addqty} />}
                                         </div>
                                     </div>
                                 </div>

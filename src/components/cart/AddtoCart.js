@@ -1,22 +1,39 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../../assets/Css/cart.scss';
 
 const AddToCart = (props) => {
     const {cartData}  = props;
-    console.log('data',cartData);
+    // console.log('data',cartData);
 
     const minusqty = (cartData) => {
-        console.log('minus');
+        // console.log('minus');
         props.minusqty(cartData);
     }
     const addqty = (cartData) => {
-        console.log('add');
+        // console.log('add');
         props.addqty(cartData);
+    }
+    
+    const[totalPrice,setTotalPrice] = useState(0);
+    const[totalQty,setTotalQty] = useState(0);
+    useEffect(() => {
+        caluclateTotal();
+    },[cartData]);
+
+    const caluclateTotal = () => {
+        let cartTotalPrice = 0;
+        let cartTotalQty = 0;
+        for(let i=0; i < cartData.length; i++ ){
+            cartTotalPrice += cartData[i].item.price * cartData[i].item.qty;
+            cartTotalQty += cartData[i].item.qty;
+        }
+        setTotalPrice(cartTotalPrice);
+        setTotalQty(cartTotalQty);
     }
     
     return (
         <>
-
+            
             <div className="cart-body px-2">
                 {cartData.map((info,i) => ( 
                 <div className="cart-item" key={i}>
@@ -37,7 +54,7 @@ const AddToCart = (props) => {
                                     </div>
                                     
                                     <div className="d-flex justify-content-end">
-                                        <div className="price"><span>₹</span> {info.item.price}</div>
+                                        <div className="price"><span>₹</span> {info.item.qty === 0 ? info.item.price : info.item.price * info.item.qty}</div>
                                     </div>
                                     
                                 </div>
@@ -49,18 +66,7 @@ const AddToCart = (props) => {
                                     <div className="item-size">Size: <span>Medium</span></div>
                                 </div>
                             </div>
-                            {/* <div className="crt-cnt-qty-prc col-12 d-flex justify-content-between">
-                                <div className="col-4">
-                                    <div className="qty d-flex ">
-                                        <div className="delete px-2"><i className="far fa-trash-alt"></i></div>
-                                        <span className="qty px-2">1</span>
-                                        <div className="add px-2"><i className="fas fa-plus"></i></div>
-                                    </div>
-                                </div>
-                                <div className="col-4 d-flex justify-content-end">
-                                    <div className="price"><span>₹</span> 199</div>
-                                </div>
-                            </div> */}
+                            
                         </div>
                         <div className="my-3"></div>
                     </div>
@@ -70,14 +76,20 @@ const AddToCart = (props) => {
                 
             <div className="checkout-box">
                 <div className="checkout-total">
-                    <div className="text checkout-text">Subtotal</div>
-                    <div className="total-amt checkout-text"><span>₹</span>790.00</div>
-                </div>
-                <div className="checkout-btn">
-                    <a href="" className="d-flex justify-content-center align-items-center">checkout</a>
+                    <div className="checkout-amt d-flex justify-content-between">
+                        <div className="text checkout-text">Subtotal</div>
+                        <div className="total-amt checkout-text"><span>₹&nbsp;</span>{totalPrice}.00</div>
+                    </div>
+                    <div className="total-items d-flex justify-content-between">
+                        <div className="total-items-text">Total items :&nbsp;<span>{totalQty}</span></div>
+                      
+                    </div>
+                    <button className="checkout-btn pointer">
+                        <span className="d-flex justify-content-center align-items-center text-uppercase">checkout</span>
+                    </button>
                 </div>
             </div>
-        
+                    
         </>
     )
 }
