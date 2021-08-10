@@ -6,11 +6,9 @@ const AddToCart = (props) => {
     // console.log('data',cartData);
 
     const minusqty = (cartData) => {
-        // console.log('minus');
         props.minusqty(cartData);
     }
     const addqty = (cartData) => {
-        // console.log('add');
         props.addqty(cartData);
     }
     
@@ -30,13 +28,20 @@ const AddToCart = (props) => {
         setTotalPrice(cartTotalPrice);
         setTotalQty(cartTotalQty);
     }
+
     
     return (
         <>
-            
+            <div className="cart-items-remove">
+                <button className="remove-items" onClick={(e) => props.clearCart()}>
+                    <i className="far fa-trash-alt"></i>
+                    <div className="remove-text">Remove All</div>
+                </button>
+            </div>
             <div className="cart-body px-2">
                 {cartData.map((info,i) => ( 
-                <div className="cart-item" key={i}>
+                // style={info.item.qty === 0 ? {display:'none'} : {display:'block'} }
+                <div className="cart-item" key={i} >
                     <div className="cart-content">
                         <div>
                             <div className="col-12 d-flex justify-content-between">

@@ -9,6 +9,7 @@ import ProductCategory from '../../components/categories';
 //import scss
 import '../../assets/Css/home.scss';
 import '../../assets/Css/styles.scss';
+import '../../assets/Css/cart.scss';
 
 class Home extends React.Component{
     constructor(props){
@@ -132,12 +133,22 @@ class Home extends React.Component{
 
         
     }
-
+    
+    // ItemRemoveInCart = (catid,item) => {
+    //     if(cartData.item.qty === 0){
+    //         let ItemRemove = cartData;
+    //         console.log('ItemRemove',ItemRemove);
+    //     }
+    // }
+    
+    clearCart = () => {
+        this.setState({cart:[]});
+    }
     
     render(){
         // console.log('render', this.state.cart);
         const {catgories} = this.state;
-        
+        // console.log('itemRemoveInCart',ItemRemoveInCart());    
         return(
             <div className="bg-color">
                 <Header />
@@ -160,7 +171,7 @@ class Home extends React.Component{
                                 <div className="col-10 d-flex"> 
                                     <div className="position-fixed d-flex">
                                         <div className="cart-box">
-                                            {this.state.cart.length === 0 ? <EmptyCart /> : <AddToCart cartData={this.state.cart} minusqty={this.minusqty} addqty={this.addqty} />}
+                                            {this.state.cart.length === 0 ? <EmptyCart /> : <AddToCart cartData={this.state.cart} minusqty={this.minusqty} addqty={this.addqty} clearCart={this.clearCart}/>}
                                         </div>
                                     </div>
                                 </div>

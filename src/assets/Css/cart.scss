@@ -21,9 +21,41 @@
             font-size: 1.25rem;
             font-weight: 700;
         }
+        .cart-items-remove{
+            box-shadow: rgba(0, 0, 0 / 12%,0.12) 0px -0.56rem 0.62rem 0px;
+            padding: 0.5rem 0.5rem;
+            background: $checkout-bg;
+            width: 100%;
+            position: absolute;
+            display: flex;
+            top: 0;
+            justify-content: flex-end;
+            .remove-items{
+                display: flex;
+                align-items: center;
+                font-size: 0.75rem;
+                border: 1px solid transparent;
+                background-color: $white;
+                color: $red;
+                border-radius: 5px;
+                cursor: pointer;
+                padding: 0.2rem 0.5rem;
+                &:hover{
+                    color: $white;
+                    background-color: $red;
+                }
+                i{
+                    margin-right: 5px;
+                }
+                .remove-text{
+                    text-transform: capitalize;
+                }
+            }
+        }
         .cart-body{
             overflow-y: scroll;
             height: 82%;
+            margin-top: 2rem;
             .cart-item{
                 .cart-content{
                     margin-top: 1rem;
@@ -43,7 +75,8 @@
                             border: 1px solid rgb(186, 186, 186);
                             border-radius: 3px;
                             .delete{
-                                color: rgb(186, 186, 186);
+                                // color: rgb(186, 186, 186);
+                                color: $black;
                                 display: flex;
                                 align-items: center;
                                 justify-content: center;
@@ -55,7 +88,8 @@
                                 font-weight: 600;
                             }
                             .add{
-                                color: rgb(186, 186, 186);
+                                // color: rgb(186, 186, 186);
+                                color: $black;
                                 display: flex;
                                 align-items: center;
                                 justify-content: center;
