@@ -1,19 +1,14 @@
 import React, { useState } from 'react';
+import { Category } from '../utils/constant/constants';
+// import { Link } from 'react-scroll';
 
 const ProductCategory = (props) => {
-    const [name,setName] = useState('')
-    function handleClick(e) {
-        console.log('ths',e);
-        setName('');
-
-        
-    }
-    
+   
     const {data} = props;
     return(
         <>
             <div className="col-2 category-font d-flex align-items-center pointer" >
-                <a className="category-text" onClick={handleClick}><span>{data.name}</span></a>
+                <a href={`#${data.name}`} className="category-text" ><span>{data.name}</span></a>
             </div>
                 
         </>
